@@ -25,7 +25,7 @@ public class Conexion {
     public static Conexion singleInstance; 
     
     
-    Conexion(){
+    private Conexion(){
         this.connection = null; 
     }
     
@@ -56,5 +56,11 @@ public class Conexion {
             singleInstance = new Conexion();
         }
         return singleInstance;
+    }
+
+    static class getInstance extends Conexion {
+
+        public getInstance() {
+        }
     }
 }
