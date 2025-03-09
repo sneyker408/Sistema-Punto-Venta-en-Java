@@ -4,54 +4,66 @@
  */
 package presentacion;
 
+import java.util.HashSet;
 import javax.swing.JOptionPane;
 import negocio.CategoriaControl;
 import javax.swing.table.TableRowSorter;
+import negocio.ArticuloControl;
+
 /**
  *
  * @author sneyker
  */
-public class FrmCategoria extends javax.swing.JInternalFrame {
+public class FrmArticulo extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form FrmCategoria
      */
-    private final CategoriaControl CONTROL;
+    private final ArticuloControl CONTROL;
     private String accion;
     private String nombreAnt;
-    
-    public FrmCategoria() {
+
+    public FrmArticulo() {
         initComponents();
-        this.CONTROL = new CategoriaControl();
+        this.CONTROL = new ArticuloControl();
         this.listar("");
         tabGeneral.setEnabledAt(1, false);
         this.accion = ("Guardar");
         this.txtId.setEnabled(false);
     }
 
-    private void listar(String texto){
-        tablaListado.setModel(this.CONTROL.listar(texto));
+    private void listar(String texto) {
+        tablaListado.setModel(this.CONTROL.listar(texto, 10, 1));
         TableRowSorter orden = new TableRowSorter(tablaListado.getModel());
+        ocultarColumna();
         tablaListado.setRowSorter(orden);
-        lblCantidadRegistro.setText("Mostrar " + 
-                this.CONTROL.totalMostrados() +
-                " de un total de " +
-                this.CONTROL.total()
-        );    
+        lblCantidadRegistro.setText("Mostrar "
+                + this.CONTROL.totalMostrados()
+                + " de un total de "
+                + this.CONTROL.total()
+        );
     }
-    
-    private void limpiar(){
+
+    private void ocultarColumna() {
+        tablaListado.getColumnModel().getColumn(1).setMaxWidth(0);
+        tablaListado.getColumnModel().getColumn(1).setMinWidth(0);
+        tablaListado.getTableHeader().getColumnModel().getColumn(1).setMaxWidth(0);
+        tablaListado.getTableHeader().getColumnModel().getColumn(1).setMinWidth(0);
+    }
+
+    private void limpiar() {
         txtNombre.setText("");
         txtDescripcion.setText("");
     }
-    
-    private void mensajeError(String mensaje){
+
+    private void mensajeError(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje, "sistema", JOptionPane.ERROR_MESSAGE);
     }
-    
-    private void mensajeOK(String mensaje){
+
+    private void mensajeOK(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje, "sistema", JOptionPane.INFORMATION_MESSAGE);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -92,7 +104,7 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Categoria");
+        setTitle("Articulo");
 
         tabGeneral.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -243,9 +255,8 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 334, Short.MAX_VALUE)
                                 .addComponent(btnCancelar))
                             .addComponent(txtDescripcion)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(chbActivo)
-                                .addComponent(txtId))
+                            .addComponent(chbActivo)
+                            .addComponent(txtId)
                             .addComponent(txtNombre))))
                 .addGap(97, 97, 97))
         );
@@ -300,54 +311,54 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        if(txtNombre.getText().length() == 0){
+        if (txtNombre.getText().length() == 0) {
             JOptionPane.showMessageDialog(this, "Nombre es obligatorio", "Systema", JOptionPane.WARNING_MESSAGE);
             txtNombre.requestFocus();
             return;
         }
-        
-        if(txtNombre.getText().length() > 30){
+
+        if (txtNombre.getText().length() > 30) {
             JOptionPane.showMessageDialog(this, "Un maximo de 30 caracteres", "Systema", JOptionPane.WARNING_MESSAGE);
             txtNombre.requestFocus();
             return;
         }
-        
+
         String respuesta;
-        
-        if(this.accion.equals("editar")){
-            respuesta = this.CONTROL.actualizar(
-                Integer.parseInt(txtId.getText()),
-                txtNombre.getText(),
-                this.nombreAnt,
-                txtDescripcion.getText(),
-                chbActivo.isSelected()
+
+        /*if (this.accion.equals("editar")) {
+            respuesta = this.CONTROL.update(
+                    Integer.parseInt(txtId.getText()),
+                    txtNombre.getText(),
+                    this.nombreAnt,
+                    txtDescripcion.getText(),
+                    chbActivo.isSelected()
             );
-        if (respuesta.equals("OK")) {
-                    this.mensajeOK("Registro editado correctamente.");
-                    this.limpiar();
-                    this.listar("");
-                    
-                    tabGeneral.setEnabledAt(1, false);
-                    tabGeneral.setEnabledAt(0, true);
-                    tabGeneral.setSelectedIndex(0);
-                    
+            if (respuesta.equals("OK")) {
+                this.mensajeOK("Registro editado correctamente.");
+                this.limpiar();
+                this.listar("");
+
+                tabGeneral.setEnabledAt(1, false);
+                tabGeneral.setEnabledAt(0, true);
+                tabGeneral.setSelectedIndex(0);
+            
             } else {
                 this.mensajeError(respuesta);
             }
-        }else{
-            respuesta = this.CONTROL.Insertar(txtNombre.getText(), txtDescripcion.getText(), chbActivo.isSelected());
-            if(respuesta.equals("OK")){
+        } else {
+            respuesta = this.CONTROL.insert(txtNombre.getText(), txtDescripcion.getText(), chbActivo.isSelected());
+            if (respuesta.equals("OK")) {
                 this.mensajeOK("Registro Insertado con exito");
                 this.limpiar();
                 this.listar("");
-                
+
                 tabGeneral.setEnabledAt(0, false);
                 tabGeneral.setEnabledAt(0, true);
                 tabGeneral.setSelectedIndex(0);
-            }else{
+            } else {
                 this.mensajeError(respuesta);
             }
-        }
+        }*/
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -366,25 +377,25 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        if(tablaListado.getSelectedRowCount()== 1){
-             String id = String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(), 0));
-                String nombre = String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(), 1));
-                String descripcion = String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(), 2));
-                String estadoStr = String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(), 3));
-                Boolean estado = estadoStr.equalsIgnoreCase("activo"); 
-                nombreAnt = nombre = String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(), 1));
-                
-                txtId.setText(id);
-                txtNombre.setText(nombre);
-                txtDescripcion.setText(descripcion);
-                chbActivo.setSelected(estado);
-                
-                tabGeneral.setEnabledAt(0, false);
-                tabGeneral.setEnabledAt(1, true);
-                tabGeneral.setSelectedIndex(1);
-                this.accion = "editar";
-                btnGuardar.setText("Editar");
-        }else{
+        if (tablaListado.getSelectedRowCount() == 1) {
+            String id = String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(), 0));
+            String nombre = String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(), 1));
+            String descripcion = String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(), 2));
+            String estadoStr = String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(), 3));
+            Boolean estado = estadoStr.equalsIgnoreCase("activo");
+            nombreAnt = nombre = String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(), 1));
+
+            txtId.setText(id);
+            txtNombre.setText(nombre);
+            txtDescripcion.setText(descripcion);
+            chbActivo.setSelected(estado);
+
+            tabGeneral.setEnabledAt(0, false);
+            tabGeneral.setEnabledAt(1, true);
+            tabGeneral.setSelectedIndex(1);
+            this.accion = "editar";
+            btnGuardar.setText("Editar");
+        } else {
             this.mensajeError("Selecciona un registro.");
         }
     }//GEN-LAST:event_btnEditarActionPerformed
@@ -395,8 +406,7 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
             String nombre = String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(), 1));
 
             // Confirma si se desea activar el registro
-            if (JOptionPane.showConfirmDialog(this, "¿Deseas activar el registro " + nombre + "?", "Activar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) 
-            {     
+            if (JOptionPane.showConfirmDialog(this, "¿Deseas activar el registro " + nombre + "?", "Activar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 // Llama al método activar para cambiar el estado
                 String resp = this.CONTROL.activar(Integer.parseInt(id));
                 if (resp.equals("OK")) {
@@ -407,7 +417,7 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
                 }
             }
         } else {
-               // Si no se seleccionó un registro
+            // Si no se seleccionó un registro
             mensajeError("Selecciona un registro.");
         }
     }//GEN-LAST:event_btnActivarActionPerformed
@@ -419,9 +429,9 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
 
             // Confirma si se desea desactivar el registro
             int confirm = JOptionPane.showConfirmDialog(this,
-                "¿Deseas desactivar el registro " + nombre + "?",
-                "Desactivar", 
-                JOptionPane.YES_NO_OPTION);
+                    "¿Deseas desactivar el registro " + nombre + "?",
+                    "Desactivar",
+                    JOptionPane.YES_NO_OPTION);
 
             if (confirm == JOptionPane.YES_OPTION) {
                 // Llama al método desactivar para cambiar el estado

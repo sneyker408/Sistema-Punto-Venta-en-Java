@@ -7,7 +7,7 @@
         <Menu class="javax.swing.JMenu" name="MnuAlmacen">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/presentacion/images/Almacen.png"/>
+              <Image iconType="3" name="/presentacion/imagenes/Almacen.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Almacen"/>
           </Properties>
@@ -30,13 +30,16 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Articulos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="MnuCompras">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/presentacion/images/Compras.png"/>
+              <Image iconType="3" name="/presentacion/imagenes/Compras.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Compras"/>
           </Properties>
@@ -62,7 +65,7 @@
         <Menu class="javax.swing.JMenu" name="MnuVentas">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/presentacion/images/Ventas.png"/>
+              <Image iconType="3" name="/presentacion/imagenes/Ventas.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Ventas"/>
           </Properties>
@@ -88,7 +91,7 @@
         <Menu class="javax.swing.JMenu" name="MnuAcceso">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/presentacion/images/Acceso.png"/>
+              <Image iconType="3" name="/presentacion/imagenes/Acceso.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Acceso"/>
           </Properties>
@@ -114,7 +117,7 @@
         <Menu class="javax.swing.JMenu" name="MnuConsultas">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/presentacion/images/Consultas.png"/>
+              <Image iconType="3" name="/presentacion/imagenes/Consultas.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Consultas"/>
           </Properties>
@@ -140,7 +143,7 @@
         <Menu class="javax.swing.JMenu" name="MnuSalir">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/presentacion/images/Salir.png"/>
+              <Image iconType="3" name="/presentacion/imagenes/Salir.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Salir"/>
           </Properties>
@@ -177,25 +180,12 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="Escritorio" pref="1904" max="32767" attributes="0"/>
+          <Component id="Escritorio" pref="1952" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JDesktopPane" name="Escritorio">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="cc" green="ff" red="cc" type="rgb"/>
-        </Property>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-            <MatteColorBorder/>
-          </Border>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="99" green="0" red="99" type="rgb"/>
-        </Property>
-      </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JDesktopPane(){&#xa;    protected void paintComponent(Graphics g){&#xa;        super.paintComponent(g);&#xa;        g.setColor(Color.white);&#xa;        g.fillRect(0,0,getWidth(), getHeight());&#xa;    }&#xa;}"/>
       </AuxValues>

@@ -1,12 +1,21 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/MDIApplication.java to edit this template
+ */
 package presentacion;
-
 import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JDesktopPane;
 
+/**
+ *
+ * @author Sneyker
+ */
 public class FrmPrincipal extends javax.swing.JFrame {
 
+    /**
+     * Creates new form FrmPrincipal
+     */
     public FrmPrincipal() {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
@@ -49,11 +58,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("puntoVenta");
 
-        Escritorio.setBackground(new java.awt.Color(204, 255, 204));
-        Escritorio.setBorder(new javax.swing.border.MatteBorder(null));
-        Escritorio.setForeground(new java.awt.Color(153, 0, 153));
-
-        MnuAlmacen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/images/Almacen.png"))); // NOI18N
+        MnuAlmacen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/imagenes/Almacen.png"))); // NOI18N
         MnuAlmacen.setText("Almacen");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_DOWN_MASK));
@@ -67,11 +72,16 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem2.setText("Articulos");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         MnuAlmacen.add(jMenuItem2);
 
         menuBar.add(MnuAlmacen);
 
-        MnuCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/images/Compras.png"))); // NOI18N
+        MnuCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/imagenes/Compras.png"))); // NOI18N
         MnuCompras.setText("Compras");
 
         jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_DOWN_MASK));
@@ -84,7 +94,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         menuBar.add(MnuCompras);
 
-        MnuVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/images/Ventas.png"))); // NOI18N
+        MnuVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/imagenes/Ventas.png"))); // NOI18N
         MnuVentas.setText("Ventas");
 
         jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_DOWN_MASK));
@@ -97,7 +107,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         menuBar.add(MnuVentas);
 
-        MnuAcceso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/images/Acceso.png"))); // NOI18N
+        MnuAcceso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/imagenes/Acceso.png"))); // NOI18N
         MnuAcceso.setText("Acceso");
 
         jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
@@ -110,7 +120,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         menuBar.add(MnuAcceso);
 
-        MnuConsultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/images/Consultas.png"))); // NOI18N
+        MnuConsultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/imagenes/Consultas.png"))); // NOI18N
         MnuConsultas.setText("Consultas");
 
         jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
@@ -123,7 +133,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         menuBar.add(MnuConsultas);
 
-        MnuSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/images/Salir.png"))); // NOI18N
+        MnuSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/imagenes/Salir.png"))); // NOI18N
         MnuSalir.setText("Salir");
         menuBar.add(MnuSalir);
 
@@ -137,7 +147,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 1904, Short.MAX_VALUE)
+            .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 1952, Short.MAX_VALUE)
         );
 
         pack();
@@ -148,6 +158,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
         Escritorio.add(frmCategoria);
         frmCategoria.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        FrmArticulo frmArticulo = new FrmArticulo();
+        Escritorio.add(frmArticulo);
+        frmArticulo.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,5 +220,4 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenuBar menuBar;
     // End of variables declaration//GEN-END:variables
-
 }
