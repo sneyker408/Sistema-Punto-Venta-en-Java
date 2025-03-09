@@ -11,10 +11,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import javax.swing.table.DefaultTableModel;
+ 
 
 /**
  *
- * @author Alexis Rauda
+ * @author sneyker
  */
 public class CategoriaControl {
 

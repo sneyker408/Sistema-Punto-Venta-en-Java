@@ -14,8 +14,9 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Alexis Rauda
+ * @author sneyker
  */
+
 public class ArticuloControl {
 
     private final ArticuloDAO DATOS;

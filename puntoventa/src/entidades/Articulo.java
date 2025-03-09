@@ -6,8 +6,9 @@ package entidades;
 
 /**
  *
- * @author Alexis Rauda
+ * @author sneyker
  */
+
 public class Articulo {
 
     private int idArticulo;
