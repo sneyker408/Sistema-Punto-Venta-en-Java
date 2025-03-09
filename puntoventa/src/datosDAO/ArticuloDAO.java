@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
  *
  * @author sneyker
  */
+
 public class ArticuloDAO implements CRUDPaginadoInterface<Articulo> {
 
     private final Conexion conectar;
@@ -103,7 +104,8 @@ public class ArticuloDAO implements CRUDPaginadoInterface<Articulo> {
         }
         return resp;
     }
-
+ 
+    
     @Override
     public boolean update(Articulo object) {
         resp = false;
@@ -131,6 +133,7 @@ public class ArticuloDAO implements CRUDPaginadoInterface<Articulo> {
         return resp;
     }
 
+    
     @Override
     public boolean onVariable(int id) {
         return cambiarEstado(id, 1);
