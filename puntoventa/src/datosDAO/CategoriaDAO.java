@@ -1,5 +1,6 @@
 
 package datosDAO;
+
 import database.Conexion;
 import datos.interfaces.CRUDGeneralInterface;
 import entidades.Categoria;
@@ -210,7 +211,6 @@ public class CategoriaDAO implements CRUDGeneralInterface<Categoria> {
         return totalRegistro;
     }
 
-    @Override
     public int getID() {
         int idMayor = -1; // Valor por defecto en caso de que no haya registros
 
