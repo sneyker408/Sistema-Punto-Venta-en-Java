@@ -16,9 +16,11 @@ import negocio.ArticuloControl;
  */
 public class FrmArticulo extends javax.swing.JInternalFrame {
 
+    
     /**
      * Creates new form FrmCategoria
      */
+    
     private final ArticuloControl CONTROL;
     private String accion;
     private String nombreAnt;
@@ -51,6 +53,7 @@ public class FrmArticulo extends javax.swing.JInternalFrame {
         tablaListado.getTableHeader().getColumnModel().getColumn(1).setMinWidth(0);
     }
 
+    
     private void limpiar() {
         txtNombre.setText("");
         txtDescripcion.setText("");
@@ -63,6 +66,7 @@ public class FrmArticulo extends javax.swing.JInternalFrame {
     private void mensajeOK(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje, "sistema", JOptionPane.INFORMATION_MESSAGE);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -323,6 +327,7 @@ public class FrmArticulo extends javax.swing.JInternalFrame {
             return;
         }
 
+        
         String respuesta;
 
         /*if (this.accion.equals("editar")) {
