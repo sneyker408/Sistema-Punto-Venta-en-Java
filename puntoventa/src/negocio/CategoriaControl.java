@@ -103,6 +103,7 @@ public class CategoriaControl {
         }
     }
 
+    
     public String desactivar(int id) {
         if (DATOS.offVariable(id)) {
             return "OK";

@@ -412,6 +412,7 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnActivarActionPerformed
 
+    
     private void btnDesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesactivarActionPerformed
         if (tablaListado.getSelectedRowCount() == 1) {  // Verifica si se seleccionó una fila
             String id = String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(), 0));
