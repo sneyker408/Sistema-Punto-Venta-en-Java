@@ -1,3 +1,5 @@
+package datosDAO;
+
 import datos.interfaces.CRUDGeneralInterface;
 import entidades.Categoria;
 import java.util.List;
